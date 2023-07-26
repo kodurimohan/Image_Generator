@@ -12,6 +12,10 @@ const RenderCards = ({ data, title }) => {
   );
 };
 
+const url = import.meta.env.VITE_SERVER_URL;
+const postsRoute = `${url}/api/v1/posts`;
+console.log(postsRoute);
+
 const Home = () => {
   const [loading, setLoading] = useState(false);
   const [allPosts, setAllPosts] = useState(null);
@@ -25,7 +29,7 @@ const Home = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:8080/api/v1/posts",
+        url?postsRoute:"http://localhost:8080/api/v1/posts",
         {
           method: "GET",
           headers: {
@@ -39,7 +43,7 @@ const Home = () => {
         setAllPosts(result.data.reverse());
       }
     } catch (err) {
-      alert(err);
+      console.log(err);
     } finally {
       setLoading(false);
     }

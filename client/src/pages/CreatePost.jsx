@@ -5,9 +5,14 @@ import { preview } from "../assets";
 import { getRandomPrompt } from "../utils";
 import { FormField, Loader } from "../components";
 
+const url = import.meta.env.VITE_SERVER_URL;
+const dalleRoute = `${url}/api/v1/dalle`
+const postsRoute = `${url}/api/v1/posts`
+
+console.log(dalleRoute, postsRoute);
+
 const CreatePost = () => {
   const navigate = useNavigate();
-
   const [form, setForm] = useState({
     name: "",
     prompt: "",
@@ -30,7 +35,7 @@ const CreatePost = () => {
       try {
         setGeneratingImg(true);
         const response = await fetch(
-          "http://localhost:8080/api/v1/dalle",
+          url? dalleRoute: "http://localhost:8080/api/v1/dalle",
           {
             method: "POST",
             headers: {
@@ -61,7 +66,7 @@ const CreatePost = () => {
       setLoading(true);
       try {
         const response = await fetch(
-          "http://localhost:8080/api/v1/posts",
+         url? postsRoute : "http://localhost:8080/api/v1/posts",
           {
             method: "POST",
             headers: {
