@@ -9,7 +9,6 @@ const url = import.meta.env.VITE_SERVER_URL;
 const dalleRoute = `${url}/api/v1/dalle`
 const postsRoute = `${url}/api/v1/posts`
 
-console.log(dalleRoute, postsRoute);
 
 const CreatePost = () => {
   const navigate = useNavigate();

@@ -14,7 +14,6 @@ const RenderCards = ({ data, title }) => {
 
 const url = import.meta.env.VITE_SERVER_URL;
 const postsRoute = `${url}/api/v1/posts`;
-console.log(postsRoute);
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
@@ -43,7 +42,7 @@ const Home = () => {
         setAllPosts(result.data.reverse());
       }
     } catch (err) {
-      console.log(err);
+      alert(err);
     } finally {
       setLoading(false);
     }

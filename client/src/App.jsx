@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, Navigate } from "react-router-dom";
 import { logo } from "./assets";
 import { Home, CreatePost } from "./pages";
 
@@ -19,6 +19,7 @@ const App = () => {
       </header>
       <main className="sm:p-8 px-4 py-8 w-full bg-[#f9faf6] min-h-[calc(100vh-73px)]">
         <Routes>
+          <Route path="*" element={<Navigate replace to="/" />} />
           <Route path="/" element={<Home />} />
           <Route path="/create-post" element={<CreatePost />} />
         </Routes>
